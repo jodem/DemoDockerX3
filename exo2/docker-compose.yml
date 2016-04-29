@@ -1,0 +1,19 @@
+
+Mongo :
+  image : mongo:3.0
+  expose : ["27017"]
+
+X3DockerMock :
+  image : jodem/x3mock:latest
+  links :
+    - Mongo
+  command : ["-m","Mongo","-p","27017","-c","cluster1"]
+  volumes :    
+  ports : ["8080:8080"]
+
+X3DockerMock2 :
+  image : jodem/x3mock:latest
+  links :
+    - Mongo
+  command : ["-m","Mongo","-p","27017","-c","cluster1"]  
+  ports : ["8081:8080"]
